@@ -4,7 +4,6 @@ namespace Game\CardBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Game\CardBundle\Entity\Categorie;
 use Game\CardBundle\Entity\Player;
 
 class Players implements FixtureInterface
@@ -46,5 +45,15 @@ class Players implements FixtureInterface
 
         $manager->persist($player);
         $manager->flush();
+    }
+
+    /**
+     * Get the order of this fixture
+     *
+     * @return integer
+     */
+    function getOrder()
+    {
+        return 1;
     }
 }

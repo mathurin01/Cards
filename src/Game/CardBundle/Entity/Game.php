@@ -24,14 +24,16 @@ class Game
     /**
      * @var integer
      *
-     * @ORM\Column(name="teamA", type="integer")
+     * @ORM\ManyToOne(targetEntity="Team")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $teamA;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="teamB", type="integer")
+     * @ORM\ManyToOne(targetEntity="Team")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $teamB;
 
@@ -66,7 +68,8 @@ class Game
     /**
      * @var string
      *
-     * @ORM\Column(name="place", type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="Place")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $place;
 
@@ -98,8 +101,8 @@ class Game
     /**
      * Set teamA
      *
-     * @param integer $teamA
-     * @return Game
+     * @param Team $teamA
+     * @return Team
      */
     public function setTeamA($teamA)
     {
@@ -111,7 +114,7 @@ class Game
     /**
      * Get teamA
      *
-     * @return integer 
+     * @return Team
      */
     public function getTeamA()
     {
@@ -121,8 +124,8 @@ class Game
     /**
      * Set teamB
      *
-     * @param integer $teamB
-     * @return Game
+     * @param Team $teamB
+     * @return Team
      */
     public function setTeamB($teamB)
     {
@@ -134,7 +137,7 @@ class Game
     /**
      * Get teamB
      *
-     * @return integer 
+     * @return Team
      */
     public function getTeamB()
     {
@@ -236,8 +239,8 @@ class Game
     /**
      * Set place
      *
-     * @param string $place
-     * @return Game
+     * @param Place $place
+     * @return Place
      */
     public function setPlace($place)
     {
@@ -249,7 +252,7 @@ class Game
     /**
      * Get place
      *
-     * @return string 
+     * @return Place
      */
     public function getPlace()
     {

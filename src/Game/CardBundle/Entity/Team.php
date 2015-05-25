@@ -24,14 +24,17 @@ class Team
     /**
      * @var integer
      *
-     * @ORM\Column(name="player1", type="integer")
+     * @ORM\ManyToOne(targetEntity="Player")
+     * @ORM\JoinColumn(nullable=false)
+
      */
     private $player1;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="player2", type="integer")
+     * @ORM\ManyToOne(targetEntity="Player")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $player2;
 
@@ -49,8 +52,8 @@ class Team
     /**
      * Set player1
      *
-     * @param integer $player1
-     * @return Team
+     * @param Player $player1
+     * @return Player
      */
     public function setPlayer1($player1)
     {
@@ -62,7 +65,7 @@ class Team
     /**
      * Get player1
      *
-     * @return integer 
+     * @return Player
      */
     public function getPlayer1()
     {
@@ -72,8 +75,8 @@ class Team
     /**
      * Set player2
      *
-     * @param integer $player2
-     * @return Team
+     * @param Player $player2
+     * @return Player
      */
     public function setPlayer2($player2)
     {
@@ -85,7 +88,7 @@ class Team
     /**
      * Get player2
      *
-     * @return integer 
+     * @return Player
      */
     public function getPlayer2()
     {
