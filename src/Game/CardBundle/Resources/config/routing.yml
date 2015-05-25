@@ -1,0 +1,3 @@
+game_card_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: GameCardBundle:Default:index }

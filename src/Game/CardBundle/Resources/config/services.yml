@@ -1,0 +1,7 @@
+parameters:
+#    game_card.example.class: Game\CardBundle\Example
+
+services:
+#    game_card.example:
+#        class: %game_card.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
