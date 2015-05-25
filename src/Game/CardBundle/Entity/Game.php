@@ -24,63 +24,63 @@ class Game
     /**
      * @var integer
      *
-     * @ORM\Column(name="team-A", type="integer")
+     * @ORM\Column(name="teamA", type="integer")
      */
-    private $team-A;
+    private $teamA;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="team-B", type="integer")
+     * @ORM\Column(name="teamB", type="integer")
      */
-    private $team-B;
+    private $teamB;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="score-A", type="integer")
+     * @ORM\Column(name="scoreA", type="integer")
      */
-    private $score-A;
+    private $scoreA;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="score-B", type="integer")
+     * @ORM\Column(name="scoreB", type="integer")
      */
-    private $score-B;
+    private $scoreB;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="date", type="datetime", nullable=true)
      */
     private $date;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="year", type="string", length=255)
+     * @ORM\Column(name="year", type="string", length=255, nullable=true)
      */
     private $year;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="place", type="string", length=255)
+     * @ORM\Column(name="place", type="string", length=255, nullable=true)
      */
     private $place;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="hits", type="integer")
+     * @ORM\Column(name="hits", type="integer", nullable=true)
      */
     private $hits;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="story", type="string", length=255)
+     * @ORM\Column(name="story", type="string", length=255, nullable=true)
      */
     private $story;
 
@@ -96,95 +96,95 @@ class Game
     }
 
     /**
-     * Set team-A
+     * Set teamA
      *
      * @param integer $teamA
      * @return Game
      */
     public function setTeamA($teamA)
     {
-        $this->team-A = $teamA;
+        $this->teamA = $teamA;
     
         return $this;
     }
 
     /**
-     * Get team-A
+     * Get teamA
      *
      * @return integer 
      */
     public function getTeamA()
     {
-        return $this->team-A;
+        return $this->teamA;
     }
 
     /**
-     * Set team-B
+     * Set teamB
      *
      * @param integer $teamB
      * @return Game
      */
     public function setTeamB($teamB)
     {
-        $this->team-B = $teamB;
+        $this->teamB = $teamB;
     
         return $this;
     }
 
     /**
-     * Get team-B
+     * Get teamB
      *
      * @return integer 
      */
     public function getTeamB()
     {
-        return $this->team-B;
+        return $this->teamB;
     }
 
     /**
-     * Set score-A
+     * Set scoreA
      *
      * @param integer $scoreA
      * @return Game
      */
     public function setScoreA($scoreA)
     {
-        $this->score-A = $scoreA;
+        $this->scoreA = $scoreA;
     
         return $this;
     }
 
     /**
-     * Get score-A
+     * Get scoreA
      *
      * @return integer 
      */
     public function getScoreA()
     {
-        return $this->score-A;
+        return $this->scoreA;
     }
 
     /**
-     * Set score-B
+     * Set scoreB
      *
      * @param integer $scoreB
      * @return Game
      */
     public function setScoreB($scoreB)
     {
-        $this->score-B = $scoreB;
+        $this->scoreB = $scoreB;
     
         return $this;
     }
 
     /**
-     * Get score-B
+     * Get scoreB
      *
      * @return integer 
      */
     public function getScoreB()
     {
-        return $this->score-B;
+        return $this->scoreB;
     }
 
     /**

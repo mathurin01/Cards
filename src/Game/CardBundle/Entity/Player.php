@@ -24,16 +24,16 @@ class Player
     /**
      * @var string
      *
-     * @ORM\Column(name="first-name", type="string", length=255)
+     * @ORM\Column(name="firstname", type="string", length=255)
      */
-    private $first-name;
+    private $firstname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="last-name", type="string", length=255)
+     * @ORM\Column(name="lastname", type="string", length=255)
      */
-    private $last-name;
+    private $lastname;
 
     /**
      * @var \DateTime
@@ -45,7 +45,7 @@ class Player
     /**
      * @var string
      *
-     * @ORM\Column(name="logo", type="string", length=255)
+     * @ORM\Column(name="logo", type="string", length=255, nullable=true)
      */
     private $logo;
 
@@ -61,49 +61,49 @@ class Player
     }
 
     /**
-     * Set first-name
+     * Set firstname
      *
      * @param string $firstName
      * @return Player
      */
     public function setFirstName($firstName)
     {
-        $this->first-name = $firstName;
+        $this->firstname = $firstName;
     
         return $this;
     }
 
     /**
-     * Get first-name
+     * Get firstname
      *
      * @return string 
      */
     public function getFirstName()
     {
-        return $this->first-name;
+        return $this->firstname;
     }
 
     /**
-     * Set last-name
+     * Set lastname
      *
      * @param string $lastName
      * @return Player
      */
     public function setLastName($lastName)
     {
-        $this->last-name = $lastName;
+        $this->lastname = $lastName;
     
         return $this;
     }
 
     /**
-     * Get last-name
+     * Get lastname
      *
      * @return string 
      */
     public function getLastName()
     {
-        return $this->last-name;
+        return $this->lastname;
     }
 
     /**
