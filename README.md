@@ -1,46 +1,34 @@
-Symfony Standard Edition
+Cards ! Les statistiques de jeu avec Symfony 2.3Bienvenue 
 ========================
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony2
-application that you can use as the skeleton for your new applications.
+Bienvenue sur le site de statistique de jeu cartes développé avec Symfony2.
+Cette application va permettre de gérer plus facilement les statistiques de jeu de [Coinche][6], couramment pratiqué en bord de Loire.
 
-This document contains information on how to download, install, and start
-using Symfony. For a more detailed explanation, see the [Installation][1]
-chapter of the Symfony Documentation.
+Ce document relate les différentes étapes de la création jusqu'à l'installation de l'application.
+- [Installation de la base de données][1]
 
-1) Installing the Standard Edition
+1) Installation de la BDD
 ----------------------------------
 
-When it comes to installing the Symfony Standard Edition, you have the
-following options.
+La création de la bdd s'effectue en ligne de commande
 
-### Use Composer (*recommended*)
+	php app/console doctrine:database:create
 
-As Symfony uses [Composer][2] to manage its dependencies, the recommended way
-to create a new project is to use it.
+Il faut ensuite mettre à jour le schéma de la bbd
 
-If you don't have Composer yet, download it following the instructions on
-http://getcomposer.org/ or just run the following command:
+	php app/console doctrine:schema:update --dump-sql
 
-    curl -s http://getcomposer.org/installer | php
+Puis effectuer les requètes pour créer cette bdd
 
-Then, use the `create-project` command to generate a new Symfony application:
+	php app/console doctrine:schema:update --force
 
-    php composer.phar create-project symfony/framework-standard-edition path/to/install
+Enfin cette commande remplira la bdd
 
-Composer will install Symfony and all its dependencies under the
-`path/to/install` directory.
+	php app/console doctrine:fixtures: load
 
-### Download an Archive File
+La suite du README au prochain épisode...
 
-To quickly test Symfony, you can also download an [archive][3] of the Standard
-Edition and unpack it somewhere under your web server root directory.
 
-If you downloaded an archive "without vendors", you also need to install all
-the necessary dependencies. Download composer (see above) and run the
-following command:
-
-    php composer.phar install
 
 2) Checking your System Configuration
 -------------------------------------
@@ -169,3 +157,8 @@ Enjoy!
 [11]: http://symfony.com/doc/2.3/cookbook/logging/monolog.html
 [12]: http://symfony.com/doc/2.3/cookbook/assetic/asset_management.html
 [13]: http://symfony.com/doc/2.3/bundles/SensioGeneratorBundle/index.html
+
+6) La coinche 
+-----------
+
+
