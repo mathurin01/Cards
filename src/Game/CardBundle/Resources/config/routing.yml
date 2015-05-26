@@ -1,3 +1,15 @@
 game_card_homepage:
-    path:     /hello/{name}
+    path:     /
     defaults: { _controller: GameCardBundle:Default:index }
+
+game_card_player:
+    path:     /player/
+    defaults: { _controller: GameCardBundle:Player:index }
+
+game_card_team:
+    path:     /team/
+    defaults: { _controller: GameCardBundle:Team:index }
+
+game_card_game:
+    path:     /game/
+    defaults: { _controller: GameCardBundle:Game:index }
