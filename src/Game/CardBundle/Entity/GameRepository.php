@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class GameRepository extends EntityRepository
 {
+    public function findLast()
+    {
+        $queryBuilder = $this->_em->createQueryBuilder()
+            ->select('g, MAX(g.id), g.scoreA, g.scoreB')
+            ->from($this->_entityName, 'g');
+        $query = $queryBuilder->getQuery();
+
+        return $query->getResult();
+    }
 }

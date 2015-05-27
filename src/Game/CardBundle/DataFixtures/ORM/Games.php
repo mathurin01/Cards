@@ -129,6 +129,9 @@ class Games extends AbstractFixture implements OrderedFixtureInterface
             106 => array( 6, 1, 1860, 3000, null, 2015, null, null, null),
             107 => array( 6, 1, 3000, 770, null, 2015, null, null, null),
             108 => array( 2, 5, 3000, 2410, null, 2015, null, null, null),
+            109 => array( 2, 5, 3000, 2210, null, 2015, null, null, null),
+            110 => array( 2, 5, 3000, 2800, null, 2015, null, null, null),
+            111 => array( 2, 5, 2490, 3000, null, 2015, null, null, null),
         );
 
         foreach($games as $i => $g)

@@ -5,5 +5,11 @@
 {% endblock %}
 
 {% block body %}
-    Hello {{ name }}!
+    Hello <br />
+    {% for l in lastGame  %}
+        {{  l[1] }}<br />
+        {{  l.scoreA }}<br />
+        {{  l.scoreB }}<br />
+
+    {% endfor %}
 {% endblock %}
