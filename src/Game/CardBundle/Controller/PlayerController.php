@@ -6,8 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PlayerController extends Controller
 {
-    public function indexAction($name)
+    public function indexAction()
     {
-        return $this->render('GameCardBundle:Player:index.html.twig', array('name' => $name));
+        $player = $this->getDoctrine()->getManager()->getRepository('GameCardBundle:Player')->findAll();
+
+        return $this->render('GameCardBundle:Player:index.html.twig', array('player' => $player));
     }
 }

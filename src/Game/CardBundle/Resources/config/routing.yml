@@ -13,3 +13,7 @@ game_card_team:
 game_card_game:
     path:     /game/
     defaults: { _controller: GameCardBundle:Game:index }
+
+game_card_rule:
+    path:     /rule/
+    defaults: { _controller: GameCardBundle:Default:rule }

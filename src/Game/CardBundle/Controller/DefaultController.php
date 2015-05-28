@@ -13,4 +13,9 @@ class DefaultController extends Controller
 
         return $this->render('GameCardBundle:Default:index.html.twig', array('lastGame' => $lastGame));
     }
+
+    public function ruleAction()
+    {
+        return $this->render('GameCardBundle:Default:rule.html.twig');
+    }
 }

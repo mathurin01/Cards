@@ -1,0 +1,15 @@
+{% extends "GameCardBundle:Team:layout.html.twig" %}
+
+{% block title %}
+    Les équipes - {{ parent() }}
+{% endblock %}
+
+{% block team_body %}
+
+    <p>
+     {% for t in team  %}
+         {{  t.player1.firstname }} / {{ t.player2.firstname }} <br />
+     {% endfor %}
+    </p>
+
+{% endblock %}
