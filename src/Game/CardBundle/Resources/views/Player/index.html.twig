@@ -1,0 +1,17 @@
+{% extends "GameCardBundle:Player:layout.html.twig" %}
+
+{% block title %}
+    Les joueurs - {{ parent() }}
+{% endblock %}
+
+{% block player_body %}
+
+    <p>
+    {% for p in player  %}
+        {{  p.firstname }}<br />
+        {{  p.lastname }}<br />
+        {{  p.birth|date("m/d/Y") }}<br />
+    {% endfor %}
+    </p>
+
+{% endblock %}

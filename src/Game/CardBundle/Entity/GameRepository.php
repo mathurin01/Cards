@@ -12,11 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class GameRepository extends EntityRepository
 {
+    /*
+     * Retourne la dernière partie jouée
+     */
     public function findLast()
     {
-        $queryBuilder = $this->_em->createQueryBuilder()
-            ->select('g, MAX(g.id), g.scoreA, g.scoreB')
-            ->from($this->_entityName, 'g');
+        $queryBuilder = $this->_em->createQueryBuilder('g')
+            ->select('g')
+            ->from($this->_entityName, 'g')
+            ->orderBy('g.id', 'DESC')
+            ->setMaxResults(1);
         $query = $queryBuilder->getQuery();
 
         return $query->getResult();

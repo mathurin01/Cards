@@ -6,8 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class TeamController extends Controller
 {
-    public function indexAction($name)
+    public function indexAction()
     {
-        return $this->render('GameCardBundle:Team:index.html.twig', array('name' => $name));
+        $team = $this->getDoctrine()->getManager()->getRepository('GameCardBundle:Team')->findAll();
+
+        return $this->render('GameCardBundle:Team:index.html.twig', array('team' => $team));
     }
 }
