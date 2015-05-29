@@ -1,10 +1,16 @@
-{% extends "GameCardBundle:Player:layout.html.twig" %}
+{% extends "GameCardBundle::layout.html.twig" %}
 
 {% block title %}
     Les joueurs - {{ parent() }}
 {% endblock %}
 
-{% block player_body %}
+{% block game_body %}
+
+    <div class="page-header">
+        <h1>Les joueurs</h1>
+    </div>
+    <p>Les historiques, les statitisques, les points, etc.</p>
+    <hr />
 
     <p>
     {% for p in player  %}
