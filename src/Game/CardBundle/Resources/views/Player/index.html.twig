@@ -9,14 +9,15 @@
     <div class="page-header">
         <h1>Les joueurs</h1>
     </div>
-    <p>Les historiques, les statitisques, les points, etc.</p>
+    {{ render(controller("GameCardBundle:Player:menu")) }}
     <hr />
+    <p>Les historiques, les statitisques, les points, etc.</p>
 
     <p>
     {% for p in player  %}
         {{  p.firstname }}<br />
         {{  p.lastname }}<br />
-        {{  p.birth|date("m/d/Y") }}<br />
+        {{  p.birth|date("d-m-Y") }}<br />
     {% endfor %}
     </p>
 
