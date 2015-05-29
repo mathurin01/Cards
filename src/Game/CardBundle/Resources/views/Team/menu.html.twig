@@ -1,0 +1,6 @@
+
+{% for t in teams  %}
+    <a href="{{ path('game_card_team_show', {'id': t.id}) }}" type="button" class="btn btn-default">{{  t.player1.firstname }} / {{ t.player2.firstname }} </a>
+{% endfor %}
+
+<hr />

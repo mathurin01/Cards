@@ -9,13 +9,8 @@
     <div class="page-header">
         <h1>Les équipes</h1>
     </div>
-    <p>Les meilleures, les pires, celles qui jouent le plus, etc.</p>
-    <hr />
+    {{ render(controller("GameCardBundle:Team:menu")) }}
 
-    <p>
-     {% for t in team  %}
-         {{  t.player1.firstname }} / {{ t.player2.firstname }} <br />
-     {% endfor %}
-    </p>
+    <p>Les meilleures, les pires, celles qui jouent le plus, etc.</p>
 
 {% endblock %}
