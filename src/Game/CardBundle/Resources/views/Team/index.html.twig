@@ -4,12 +4,14 @@
     Les équipes - {{ parent() }}
 {% endblock %}
 
-{% block game_body %}
 
+{% block game_body_title %}
     <div class="page-header">
         <h1>Les équipes</h1>
     </div>
-    {{ render(controller("GameCardBundle:Team:menu")) }}
+{% endblock %}
+
+{% block game_body %}
 
     <p>Les meilleures, les pires, celles qui jouent le plus, etc.</p>
 

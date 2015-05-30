@@ -17,6 +17,7 @@ class TeamController extends Controller
         $nbLoose = $this->getDoctrine()->getManager()->getRepository('GameCardBundle:Game')->nbLoose($id);
         $nbGame = $this->getDoctrine()->getManager()->getRepository('GameCardBundle:Game')->nbGame($id);
         $nbWin = $this->getDoctrine()->getManager()->getRepository('GameCardBundle:Game')->nbWin($id);
+
         /*
          * A déporter dans une fonction pour effectuer le calcul
          * Voir s'il ne serait pas plus rapide d'avoir les résultats précédents dans cette fonction...
@@ -29,7 +30,7 @@ class TeamController extends Controller
             'nbGame' => $nbGame,
             'nbLoose' => $nbLoose
             /*'nbPtsLoose' => $nbPtsLoose*/
-    ));
+        ));
 
     }
 
@@ -38,6 +39,10 @@ class TeamController extends Controller
         $teams = $this->getDoctrine()->getManager()->getRepository('GameCardBundle:Team')->findAll();
 
         return $this->render('GameCardBundle:Team:menu.html.twig', array('teams' => $teams));
+    }
+
+    private function makeStat(){
+
     }
 
 }

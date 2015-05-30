@@ -4,6 +4,17 @@
     Les équipes - {{ parent() }}
 {% endblock %}
 
+
+{% block game_body_title %}
+    <div class="page-header">
+        <h1>L'équipe
+            {% for t in team  %}
+                {{  t.player1.firstname }} / {{ t.player2.firstname }}
+            {% endfor %}
+        </h1>
+    </div>
+{% endblock %}
+
 {% block game_body %}
     {% set nbG = '' %}
     {% set nbL = '' %}
@@ -12,16 +23,7 @@
     {% for v in nbWin  %}{% set nbL = v[1] %}{% endfor %}
     {% for l in nbLoose  %}{% set nbW = l[1] %}{% endfor %}
 
-
-    <div class="page-header">
-        <h1>L'équipe
-            {% for t in team  %}
-                {{  t.player1.firstname }} / {{ t.player2.firstname }}
-                <small>{{ (nbW*100/nbG)|number_format(2, ',', '.') }} % de victoire</small>
-            {% endfor %}
-        </h1>
-    </div>
-    {{ render(controller("GameCardBundle:Team:menu")) }}
+    <p>Pourcentage moyen de victoire : {{ (nbW*100/nbG)|number_format(2, ',', '.') }} %</p>
     <p>Cette équipe totalise {{  nbW }} victoires sur un total de {{  nbG }} soit {{ nbL }} parties perdues.</p>
     <p>Le nombre de points totalisé par cette équipe ets de ... pts ({{ nbW }} victoires x 3000 + ...)</p>
     <p>Donc la moyenne de pointe obtenu lorsque cette équipe perd est de  pts</p>
