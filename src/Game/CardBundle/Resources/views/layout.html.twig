@@ -5,6 +5,17 @@
 {% endblock %}
 
 {% block body %}
+
+    {% block game_body_title %}
+    {% endblock %}
+
+
+    {% if teams is defined and teams is not null and teams|length>0 %}
+        {{ render(controller("GameCardBundle:Team:menu")) }}
+    {% endif %}
+    {% if players is defined and players is not null and players|length>0 %}
+        {{ render(controller("GameCardBundle:Player:menu")) }}
+    {% endif %}
     {% block game_body %}
 
     {% endblock %}
