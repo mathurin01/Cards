@@ -89,8 +89,8 @@ class Game
 
     public function __construct()
     {
-        $this->teamA = new ArrayCollection();
-        $this->teamB = new ArrayCollection();
+        $this->teamA = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->teamB = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
