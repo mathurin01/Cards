@@ -4,13 +4,14 @@
     Les joueurs - {{ parent() }}
 {% endblock %}
 
-{% block game_body %}
+{% block game_body_title %}
+    <div class="page-header">
+        <h1>Les joueurs</h1>
+    </div>
+    {{ render(controller("GameCardBundle:Player:menu")) }}
+{% endblock %}
 
-    {% block game_body_title %}
-        <div class="page-header">
-            <h1>Les joueurs</h1>
-        </div>
-    {% endblock %}
+{% block game_body %}
     <hr />
     <p>Les historiques, les statitisques, les points, etc.</p>
 
@@ -19,6 +20,7 @@
         {{  p.firstname }}<br />
         {{  p.lastname }}<br />
         {{  p.birth|date("d-m-Y") }}<br />
+        <hr />
     {% endfor %}
     </p>
 
