@@ -2,5 +2,4 @@
 {% for p in players  %}
     <a href="{{ path('game_card_player_show', {'id': p.id}) }}" type="button" class="btn btn-default">{{  p.firstname }}</a>
 {% endfor %}
-
 <hr />

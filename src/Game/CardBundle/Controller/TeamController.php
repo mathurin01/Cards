@@ -40,9 +40,4 @@ class TeamController extends Controller
 
         return $this->render('GameCardBundle:Team:menu.html.twig', array('teams' => $teams));
     }
-
-    private function makeStat(){
-
-    }
-
 }
