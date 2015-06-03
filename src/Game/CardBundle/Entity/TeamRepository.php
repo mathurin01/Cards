@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class TeamRepository extends EntityRepository
 {
+    public function myFindAll()
+    {
+        $queryBuilder = $this->_em->createQueryBuilder('t')
+            ->select('t')
+            ->from($this->_entityName, 't');
+        $query = $queryBuilder->getQuery();
+
+        return $query->getResult();
+    }
 }

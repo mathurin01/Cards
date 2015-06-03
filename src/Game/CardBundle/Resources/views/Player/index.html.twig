@@ -4,15 +4,26 @@
     Les joueurs - {{ parent() }}
 {% endblock %}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> afda4800adf84dff0d50b38ae6e8120d1023ea5e
 {% block game_body_title %}
     <div class="page-header">
         <h1>Les joueurs</h1>
     </div>
+<<<<<<< HEAD
 {% endblock %}
 
 {% block game_body %}
 
+=======
+    {{ render(controller("GameCardBundle:Player:menu")) }}
+{% endblock %}
+
+{% block game_body %}
+    <hr />
+>>>>>>> afda4800adf84dff0d50b38ae6e8120d1023ea5e
     <p>Les historiques, les statitisques, les points, etc.</p>
 
     <p>
@@ -20,6 +31,7 @@
         {{  p.firstname }}<br />
         {{  p.lastname }}<br />
         {{  p.birth|date("d-m-Y") }}<br />
+        <hr />
     {% endfor %}
     </p>
 
