@@ -3,12 +3,13 @@
 namespace Game\CardBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Game
  *
  * @ORM\Table(name="game")
- * @ORM\Entity(repositoryClass="Game\CardBundle\Entity\GameRepository")
+ * @ORM\Entity(repositoryClass="Game\CardBundle\Repository\GameRepository")
  */
 class Game
 {
@@ -89,8 +90,8 @@ class Game
 
     public function __construct()
     {
-        $this->teamA = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->teamB = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->teamA = new ArrayCollection();
+        $this->teamB = new ArrayCollection();
     }
 
     /**
