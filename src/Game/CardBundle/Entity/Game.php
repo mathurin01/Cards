@@ -93,7 +93,6 @@ class Game
         $this->teamB = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-
     /**
      * Get id
      *

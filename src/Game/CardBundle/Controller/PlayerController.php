@@ -3,33 +3,58 @@
 namespace Game\CardBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+
 
 class PlayerController extends Controller
 {
-    public function indexAction()
+    /**
+     * [indexAction description]
+     *
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function indexAction(Request $request)
     {
-        if(!$players = $this->getRequest()->getSession()->get('players')){
+        if (!$players = $request->getSession()->get('players')) {
             $players = $this->getDoctrine()->getManager()->getRepository('GameCardBundle:Player')->findAll();
-            $session = $this->getRequest()->getSession();
+            $session = $request->getSession();
             $session->set('players', $players);
         }
 
-        return $this->render('GameCardBundle:Player:index.html.twig', array('players' => $players));
+        return $this->render('GameCardBundle:Player:index.html.twig', [
+            'players' => $players
+        ]);
     }
 
+    /**
+     * [showAction description]
+     *
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
     public function showAction($id)
     {
-        $player = $this->getDoctrine()->getManager()->getRepository('GameCardBundle:Player')->findById($id);
-
-        return $this->render('GameCardBundle:Player:show.html.twig', array('player' => $player));
+        return $this->render('GameCardBundle:Player:show.html.twig', [
+            'player' => $this->getDoctrine()->getManager()->getRepository('GameCardBundle:Player')->findById($id)
+        ]);
 
     }
 
-    public function menuAction()
+    /**
+     * [menuAction description]
+     *
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function menuAction(Request $request)
     {
-        if(!$players = $this->getRequest()->getSession()->get('players'))
+        if (!$players = $request->getSession()->get('players')) {
             $players = $this->getDoctrine()->getManager()->getRepository('GameCardBundle:Player')->findAll();
+        }
 
-        return $this->render('GameCardBundle:Player:menu.html.twig', array('players' => $players));
+        return $this->render('GameCardBundle:Player:menu.html.twig', [
+            'players' => $players
+        ]);
     }
 }
