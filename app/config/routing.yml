@@ -1,4 +1,3 @@
 game_card:
     resource: "@GameCardBundle/Resources/config/routing.yml"
     prefix:   /
-

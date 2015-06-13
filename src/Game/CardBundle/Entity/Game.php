@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Game
  *
- * @ORM\Table()
+ * @ORM\Table(name="game")
  * @ORM\Entity(repositoryClass="Game\CardBundle\Entity\GameRepository")
  */
 class Game
@@ -97,7 +97,7 @@ class Game
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -113,7 +113,7 @@ class Game
     public function setTeamA($teamA)
     {
         $this->teamA = $teamA;
-    
+
         return $this;
     }
 
@@ -136,7 +136,7 @@ class Game
     public function setTeamB($teamB)
     {
         $this->teamB = $teamB;
-    
+
         return $this;
     }
 
@@ -159,14 +159,14 @@ class Game
     public function setScoreA($scoreA)
     {
         $this->scoreA = $scoreA;
-    
+
         return $this;
     }
 
     /**
      * Get scoreA
      *
-     * @return integer 
+     * @return integer
      */
     public function getScoreA()
     {
@@ -182,14 +182,14 @@ class Game
     public function setScoreB($scoreB)
     {
         $this->scoreB = $scoreB;
-    
+
         return $this;
     }
 
     /**
      * Get scoreB
      *
-     * @return integer 
+     * @return integer
      */
     public function getScoreB()
     {
@@ -205,14 +205,14 @@ class Game
     public function setDate($date)
     {
         $this->date = $date;
-    
+
         return $this;
     }
 
     /**
      * Get date
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDate()
     {
@@ -228,14 +228,14 @@ class Game
     public function setYear($year)
     {
         $this->year = $year;
-    
+
         return $this;
     }
 
     /**
      * Get year
      *
-     * @return string 
+     * @return string
      */
     public function getYear()
     {
@@ -251,7 +251,7 @@ class Game
     public function setPlace($place)
     {
         $this->place = $place;
-    
+
         return $this;
     }
 
@@ -274,14 +274,14 @@ class Game
     public function setHits($hits)
     {
         $this->hits = $hits;
-    
+
         return $this;
     }
 
     /**
      * Get hits
      *
-     * @return integer 
+     * @return integer
      */
     public function getHits()
     {
@@ -297,14 +297,14 @@ class Game
     public function setStory($story)
     {
         $this->story = $story;
-    
+
         return $this;
     }
 
     /**
      * Get story
      *
-     * @return string 
+     * @return string
      */
     public function getStory()
     {

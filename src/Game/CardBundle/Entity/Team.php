@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Team
  *
- * @ORM\Table()
+ * @ORM\Table(name="team")
  * @ORM\Entity(repositoryClass="Game\CardBundle\Entity\TeamRepository")
  */
 class Team
@@ -26,7 +26,6 @@ class Team
      *
      * @ORM\ManyToOne(targetEntity="Player")
      * @ORM\JoinColumn(nullable=false)
-
      */
     private $player1;
 
@@ -48,7 +47,7 @@ class Team
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -64,7 +63,7 @@ class Team
     public function setPlayer1($player1)
     {
         $this->player1 = $player1;
-    
+
         return $this;
     }
 
@@ -87,7 +86,7 @@ class Team
     public function setPlayer2($player2)
     {
         $this->player2 = $player2;
-    
+
         return $this;
     }
 
