@@ -3,20 +3,65 @@
 namespace Game\CardBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Game\CardBundle\Entity\Functions;
 
 class TeamController extends Controller
 {
+    public $t_Main  = array();
+    public $t_Low   = array();
+    public $t_Order = array();
+    public $t_Team  = array();
+
     public function indexAction()
     {
-        return $this->render('GameCardBundle:Team:index.html.twig');
+        $tabMain = $this->loadTeamMain();
+        $tabLow = $this->loadTeamLow();
+        $tabTeam = $this->loadTeamTeam();
+        return $this->render('GameCardBundle:Team:index.html.twig', array(
+            'tabMain'   => $tabMain,
+            'tabTeam'   => $tabTeam,
+            'tabLow'    => $tabLow,
+        ));
     }
 
-    public function showAction($id)
+    public function loadTeamTeam()
+    {
+        if($this->t_Team == null)
+            $this->load();
+
+        return $this->t_Team;
+    }
+
+    public function loadTeamMain()
+    {
+        if($this->t_Main == null)
+            $this->load();
+
+        return $this->t_Main;
+    }
+
+    public function loadTeamLow()
+    {
+        if($this->t_Low == null)
+            $this->load();
+
+        return $this->t_Low;
+    }
+
+    public function loadTeamOrder()
+    {
+        if($this->t_Order == null)
+            $this->load();
+
+        return $this->t_Order;
+    }
+
+    public function load()
     {
         $games = $this->getDoctrine()->getManager()->getRepository('GameCardBundle:Game')->findAll();
         $teams = $this->getDoctrine()->getManager()->getRepository('GameCardBundle:Team')->findAll();
 
-        $team = $this->getDoctrine()->getManager()->getRepository('GameCardBundle:Team')->findById($id);
+        //$team = $this->getDoctrine()->getManager()->getRepository('GameCardBundle:Team')->findById($id);
 
         $tabTeam = array();
         $tabLow = array();
@@ -64,6 +109,7 @@ class TeamController extends Controller
             $tabTeam[$t->getId()]['nbGame'] = $nbGame;
             $tabTeam[$t->getId()]['nbGameLoose'] = $nbGameLoose;
             $tabTeam[$t->getId()]['pourcent'] = ($nbGame-$nbGameLoose)*100 / $nbGame;
+            $tabTeam[$t->getId()]['id'] = $t->getId();
 
             $jj++;
             $totalA = 0;
@@ -97,12 +143,16 @@ class TeamController extends Controller
         $tabOrder['nbGameLoose']    = arsort($tabLow['nbGameLoose'], SORT_DESC);
         $tabOrder['pourcent']       = arsort($tabLow['pourcent'], SORT_DESC);
 
-        return $this->render('GameCardBundle:Team:show.html.twig', array(
+        $this->t_Main   = $tabMain;
+        $this->t_Order  = $tabOrder;
+        $this->t_Low    = $tabLow;
+        $this->t_Team   = $tabTeam;
+        /*return $this->render('GameCardBundle:Team:show.html.twig', array(
             'tabMain'   => $tabMain,
             'tabTeam'   => $tabTeam,
             'tabLow'    => $tabLow,
-            'team'      => $team,
-        ));
+            //'team'      => $team,
+        ));*/
 
     }
 

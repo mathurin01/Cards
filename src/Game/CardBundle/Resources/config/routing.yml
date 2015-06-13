@@ -16,12 +16,6 @@ game_card_team:
     path:     /team/
     defaults: { _controller: GameCardBundle:Team:index }
 
-game_card_team_show:
-    path:     /team/show/{id}
-    defaults: { _controller: GameCardBundle:Team:show }
-    requirements:
-        id: \d+
-
 game_card_game:
     path:     /game/
     defaults: { _controller: GameCardBundle:Game:index }

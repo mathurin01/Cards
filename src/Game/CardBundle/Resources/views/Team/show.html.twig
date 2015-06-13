@@ -8,35 +8,12 @@
 {% block game_body_title %}
     <div class="page-header">
         <h1>L'équipe
-            {% for t in team  %}
-                {{  t.player1.firstname }} / {{ t.player2.firstname }}
-            {% endfor %}
         </h1>
     </div>
 {% endblock %}
 
 {% block game_body %}
 
-    <h3>Total des points par equipe</h3>
-    {% for t in tabLow['totalPts'] %}
-        {{ t[0] }} points pour {{ t[1] }}<br />
-    {% endfor %}
-    <h3>Total des points en défense par équipe</h3>
-    {% for t in tabLow['totalPtsLoose'] %}
-        {{ t[0]|number_format(0, ',', '  ') }} points  par {{ t[1] }}<br />
-    {% endfor %}
-    <h3>Plus grand nombre de partie par équipe</h3>
-    {% for t in tabLow['nbGame'] %}
-        {{ t[0] }} parties pour  {{ t[1] }}<br />
-    {% endfor %}
-    <h3>Nombre de partie perdues par équipe</h3>
-    {% for t in tabLow['nbGameLoose'] %}
-        {{ t[0] }} parties pour {{ t[1] }}<br />
-    {% endfor %}
-    <h3>Pourcentage de victoire par équipe</h3>
-    {% for t in tabLow['pourcent'] %}
-        {{ t[0]|number_format(2, ',', '.') }} % de victoire {{ t[1] }}<br />
-    {% endfor %}
 
     <a href="#" class="btn btn-default">Général</a>
     <h3>Plus grand nombre de point : {{ tabMain['totalPts'][0] }}</h3>
@@ -59,6 +36,28 @@
 
     {% endfor %}
 
+
+
+    <h3>Total des points par equipe</h3>
+    {% for t in tabLow['totalPts'] %}
+        {{ t[0] }} points pour {{ t[1] }}<br />
+    {% endfor %}
+    <h3>Total des points en défense par équipe</h3>
+    {% for t in tabLow['totalPtsLoose'] %}
+        {{ t[0]|number_format(0, ',', '  ') }} points  par {{ t[1] }}<br />
+    {% endfor %}
+    <h3>Plus grand nombre de partie par équipe</h3>
+    {% for t in tabLow['nbGame'] %}
+        {{ t[0] }} parties pour  {{ t[1] }}<br />
+    {% endfor %}
+    <h3>Nombre de partie perdues par équipe</h3>
+    {% for t in tabLow['nbGameLoose'] %}
+        {{ t[0] }} parties pour {{ t[1] }}<br />
+    {% endfor %}
+    <h3>Pourcentage de victoire par équipe</h3>
+    {% for t in tabLow['pourcent'] %}
+        {{ t[0]|number_format(2, ',', '.') }} % de victoire {{ t[1] }}<br />
+    {% endfor %}
 
 
 {% endblock %}
