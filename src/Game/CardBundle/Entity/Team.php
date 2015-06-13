@@ -41,8 +41,8 @@ class Team
 
     public function __construct()
     {
-        $this->player1 = new ArrayCollection();
-        $this->player2 = new ArrayCollection();
+        $this->player1 = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->player2 = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

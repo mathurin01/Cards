@@ -16,31 +16,49 @@
 {% endblock %}
 
 {% block game_body %}
-    {% set nbG = '' %}
-    {% set nbL = '' %}
-    {% set nbW = '' %}
-    {% for g in nbGame  %}{% set nbG = g[1] %}{% endfor %}
-    {% for v in nbWin  %}{% set nbL = v[1] %}{% endfor %}
-    {% for l in nbLoose  %}{% set nbW = l[1] %}{% endfor %}
 
-    <p>Pourcentage moyen de victoire : {{ (nbW*100/nbG)|number_format(2, ',', '.') }} %</p>
-    <p>Cette équipe totalise {{  nbW }} victoires sur un total de {{  nbG }} soit {{ nbL }} parties perdues.</p>
-    <p>Le nombre de points totalisé par cette équipe ets de ... pts ({{ nbW }} victoires x 3000 + ...)</p>
-    <p>Donc la moyenne de pointe obtenu lorsque cette équipe perd est de  pts</p>
-    <p>à faire : </p>
-    <ul>
-        <li>nb de confrontation</li>
-        <li>classement par point</li>
-        <li>classement pas victoire</li>
-        <li>classement par en %</li>
-    </ul>
+    <h3>Total des points par equipe</h3>
+    {% for t in tabLow['totalPts'] %}
+        {{ t[0] }} points pour {{ t[1] }}<br />
+    {% endfor %}
+    <h3>Total des points en défense par équipe</h3>
+    {% for t in tabLow['totalPtsLoose'] %}
+        {{ t[0]|number_format(0, ',', '  ') }} points  par {{ t[1] }}<br />
+    {% endfor %}
+    <h3>Plus grand nombre de partie par équipe</h3>
+    {% for t in tabLow['nbGame'] %}
+        {{ t[0] }} parties pour  {{ t[1] }}<br />
+    {% endfor %}
+    <h3>Nombre de partie perdues par équipe</h3>
+    {% for t in tabLow['nbGameLoose'] %}
+        {{ t[0] }} parties pour {{ t[1] }}<br />
+    {% endfor %}
+    <h3>Pourcentage de victoire par équipe</h3>
+    {% for t in tabLow['pourcent'] %}
+        {{ t[0]|number_format(2, ',', '.') }} % de victoire {{ t[1] }}<br />
+    {% endfor %}
 
-    <hr />
+    <a href="#" class="btn btn-default">Général</a>
+    <h3>Plus grand nombre de point : {{ tabMain['totalPts'][0] }}</h3>
+    <p>par {{ tabMain['totalPts'][1] }}</p>
+    <h3>Plus nombre nombre de point : {{ tabMain['totalPtsLoose'][0] }}</h3>
+    <p>par {{ tabMain['totalPtsLoose'][1] }}</p>
+    <h3>Plus grand nombre de parties jouées : {{ tabMain['nbGame'][0] }}</h3>
+    <p>par {{ tabMain['nbGame'][1] }}</p>
+    <h3>Plus grand nombre de parties perdues : {{ tabMain['nbGameLoose'][0] }}</h3>
+    <p>par {{ tabMain['nbGameLoose'][1] }}</p>
+    <h3>Plus grand % de victoire/partie  : {{ tabMain['pourcent'][0]|number_format(2, ',', '.') }}</h3>
+    <p>par {{ tabMain['pourcent'][1] }}</p>
 
-    <p>
-        {% for t in team  %}
-            {{  t.player1.firstname }} / {{ t.player2.firstname }} <br />
-        {% endfor %}
-    </p>
+    {% for tab in tabTeam %}
+        <a href="#" class="btn btn-default">{{ tab['name'] }}</a>
+        <p>Cette équipe totalise {{ tab['nbGame']-tab['nbGameLoose'] }} victoires sur un total de {{ tab['nbGame'] }} soit {{ tab['nbGameLoose'] }} parties perdues.</p>
+        <p>Le nombre de points totalisé par cette équipe est de {{ tab['totalPts'] }} pts ({{ tab['nbGame']-tab['nbGameLoose'] }} victoires x 3000 pts + {{ tab['nbGameLoose'] }} pts en défaite)</p>
+        <p>Donc la moyenne de points obtenu lorsque cette équipe perd est de {{ (tab['totalPtsLoose']/tab['nbGameLoose'])|number_format(0, ',', ' ') }} pts</p>
+        <p>Pourcentage moyen de victoire : {{ tab['pourcent']|number_format(2, ',', '.') }} %</p>
+
+    {% endfor %}
+
+
 
 {% endblock %}
