@@ -1,7 +1,7 @@
 parameters:
-#    game_card.example.class: Game\CardBundle\Example
+    manager.statistic.class: Game\CardBundle\Manager\StatisticManager
 
 services:
-#    game_card.example:
-#        class: %game_card.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+   manager.statistic:
+       class: %manager.statistic.class%
+       arguments: ["@doctrine.orm.entity_manager"]
