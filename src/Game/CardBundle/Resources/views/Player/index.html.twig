@@ -12,16 +12,14 @@
 {% endblock %}
 
 {% block game_body %}
-    <hr />
-    <p>Les historiques, les statitisques, les points, etc.</p>
+    <h2>Les historiques, les statitisques, les points, etc.</h2>
 
-    <p>
     {% for p in players  %}
-        {{  p.firstname }}<br />
-        {{  p.lastname }}<br />
-        {{  p.birth|date("d-m-Y") }}<br />
-        <hr />
+        <div class="card">
+            <span class="fistname">{{ p.firstname|capitalize }}</span>
+            <span class="lastname">{{ p.lastname }}</span>
+            <span class="birthdate">{{ p.birth|date("d/m/Y") }}</span>
+        </div>
+        <hr>
     {% endfor %}
-    </p>
-
 {% endblock %}

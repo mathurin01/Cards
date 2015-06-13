@@ -7,26 +7,52 @@ use Game\CardBundle\Entity\Game;
 
 class DefaultController extends Controller
 {
+    /**
+     * [indexAction description]
+     *
+     * @return [type] [description]
+     */
     public function indexAction()
     {
-        $tabGame = $this->getDoctrine()->getManager()->getRepository('GameCardBundle:Game')->findAll();
-        $tabTeam = $this->getDoctrine()->getManager()->getRepository('GameCardBundle:Team')->findAll();
-        $tabPlayer = $this->getDoctrine()->getManager()->getRepository('GameCardBundle:Player')->findAll();
+        $manager = $this->getDoctrine()->getManager();
+        $gameRepository = $manager->getRepository('GameCardBundle:Game');
 
-        $mytab = $this->make($tabPlayer, $tabTeam, $tabGame);
+        $tabGame   = $gameRepository->findAll();
+        $lastGame  = $gameRepository->findLast();
 
-        $lastGame = $this->getDoctrine()->getManager()->getRepository('GameCardBundle:Game')->findLast();
+        $tabTeam   = $manager->getRepository('GameCardBundle:Team')->findAll();
+        $tabPlayer = $manager->getRepository('GameCardBundle:Player')->findAll();
 
-        return $this->render('GameCardBundle:Default:index.html.twig', array('lastGame' => $lastGame));
+        $mytab = $this->make($tabPlayer, $tabTeam, $tabGame); // @todo
+
+        return $this->render('GameCardBundle:Default:index.html.twig', [
+            'lastGame' => $lastGame
+        ]);
     }
 
+    /**
+     * [ruleAction description]
+     *
+     * @return [type] [description]
+     */
     public function ruleAction()
     {
         return $this->render('GameCardBundle:Default:rule.html.twig');
     }
 
-    private function make($tabPlayer, $tabTeam, $tabGame){
-        $myTab = array();
+    /**
+     * [make description]
+     *
+     * @todo
+     *
+     * @param  [type] $tabPlayer [description]
+     * @param  [type] $tabTeam   [description]
+     * @param  [type] $tabGame   [description]
+     * @return [type]            [description]
+     */
+    private function make($tabPlayer, $tabTeam, $tabGame)
+    {
+        $myTab = [];
        /* foreach ($tabPlayer as $player) {
             foreach ($tabTeam as $team) {
                 $myTab['id'] = $team->getId();
@@ -39,7 +65,16 @@ class DefaultController extends Controller
         }*/
     }
 
-    public function menuTeam($mytab){
-         return $this->render('GameCardBundle:Team:menu.html.twig', array('mytab' => $mytab));
+    /**
+     * [menuTeam description]
+     *
+     * @param  [type] $mytab [description]
+     * @return [type]        [description]
+     */
+    public function menuTeam($mytab)
+    {
+        return $this->render('GameCardBundle:Team:menu.html.twig', [
+            'mytab' => $mytab
+        ]);
     }
 }

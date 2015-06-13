@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Place
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Game\CardBundle\Entity\PlaceRepository")
+ * @ORM\Table(name="place")
+ * @ORM\Entity(repositoryClass="Game\CardBundle\Repository\PlaceRepository")
  */
 class Place
 {
@@ -39,7 +39,7 @@ class Place
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -55,14 +55,14 @@ class Place
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -78,14 +78,14 @@ class Place
     public function setTown($town)
     {
         $this->town = $town;
-    
+
         return $this;
     }
 
     /**
      * Get town
      *
-     * @return string 
+     * @return string
      */
     public function getTown()
     {

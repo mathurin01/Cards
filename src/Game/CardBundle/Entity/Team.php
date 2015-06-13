@@ -3,12 +3,13 @@
 namespace Game\CardBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Team
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Game\CardBundle\Entity\TeamRepository")
+ * @ORM\Table(name="team")
+ * @ORM\Entity(repositoryClass="Game\CardBundle\Repository\TeamRepository")
  */
 class Team
 {
@@ -26,7 +27,6 @@ class Team
      *
      * @ORM\ManyToOne(targetEntity="Player")
      * @ORM\JoinColumn(nullable=false)
-
      */
     private $player1;
 
@@ -41,14 +41,14 @@ class Team
 
     public function __construct()
     {
-        $this->player1 = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->player2 = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->player1 = new ArrayCollection();
+        $this->player2 = new ArrayCollection();
     }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -64,7 +64,7 @@ class Team
     public function setPlayer1($player1)
     {
         $this->player1 = $player1;
-    
+
         return $this;
     }
 
@@ -87,7 +87,7 @@ class Team
     public function setPlayer2($player2)
     {
         $this->player2 = $player2;
-    
+
         return $this;
     }
 

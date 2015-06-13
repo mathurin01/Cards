@@ -1,6 +1,6 @@
 <?php
 
-namespace Game\CardBundle\Entity;
+namespace Game\CardBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 

@@ -6,10 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class GameController extends Controller
 {
+    /**
+     * [indexAction description]
+     *
+     * @return [type] [description]
+     */
     public function indexAction()
     {
-        $lastGame = $this->getDoctrine()->getManager()->getRepository('GameCardBundle:Game')->findLast();
-
-        return $this->render('GameCardBundle:Game:index.html.twig', array('lastGame' => $lastGame));
+        return $this->render('GameCardBundle:Game:index.html.twig', [
+            'lastGame' => $this->getDoctrine()->getManager()->getRepository('GameCardBundle:Game')->findLast(),
+        ]);
     }
 }

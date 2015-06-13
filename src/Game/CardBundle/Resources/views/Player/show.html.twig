@@ -7,8 +7,8 @@
 {% block game_body_title %}
     <div class="page-header">
         <h1>
-            {% for p in player  %}
-                {{  p.firstname }}
+            {% for p in player %}
+                {{ p.firstname }}
             {% endfor %}
         </h1>
     </div>
@@ -16,7 +16,6 @@
 
 {% block game_body %}
     {{ render(controller("GameCardBundle:Player:menu")) }}
-
 
     <p>à faire : </p>
     <ul>
@@ -31,8 +30,7 @@
 
     <p>
         {% for p in player  %}
-            {{  p.firstname }}<br />
+            {{ p.firstname }}<br />
         {% endfor %}
     </p>
-
 {% endblock %}

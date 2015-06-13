@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Player
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Game\CardBundle\Entity\PlayerRepository")
+ * @ORM\Table(name="player")
+ * @ORM\Entity(repositoryClass="Game\CardBundle\Repository\PlayerRepository")
  */
 class Player
 {
@@ -53,7 +53,7 @@ class Player
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -69,14 +69,14 @@ class Player
     public function setFirstName($firstName)
     {
         $this->firstname = $firstName;
-    
+
         return $this;
     }
 
     /**
      * Get firstname
      *
-     * @return string 
+     * @return string
      */
     public function getFirstName()
     {
@@ -92,14 +92,14 @@ class Player
     public function setLastName($lastName)
     {
         $this->lastname = $lastName;
-    
+
         return $this;
     }
 
     /**
      * Get lastname
      *
-     * @return string 
+     * @return string
      */
     public function getLastName()
     {
@@ -115,14 +115,14 @@ class Player
     public function setBirth($birth)
     {
         $this->birth = $birth;
-    
+
         return $this;
     }
 
     /**
      * Get birth
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getBirth()
     {
@@ -138,14 +138,14 @@ class Player
     public function setLogo($logo)
     {
         $this->logo = $logo;
-    
+
         return $this;
     }
 
     /**
      * Get logo
      *
-     * @return string 
+     * @return string
      */
     public function getLogo()
     {
