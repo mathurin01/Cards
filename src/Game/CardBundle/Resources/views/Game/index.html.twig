@@ -37,6 +37,41 @@
         {{ date }}
     </p>
 
+    <div role="tabpanel">
+        <ul id="myTab" class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#General" aria-controls="General" role="tab" data-toggle="tab">Général</a>
+            </li>
+            {% for tab in tabTeam %}
+                <li role="presentation">
+                    <a href="#{{ tab['id'] }}" aria-controls="{{ tab['id'] }}" role="tab" data-toggle="tab">{{ tab['name'] }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active" id="General">
+                <h3><i class="fa fa-thumbs-o-up fa-fw"></i>Plus grand nombre de point : {{ tabMain['totalPts'][0] }}</h3>
+                <p>par {{ tabMain['totalPts'][1] }}</p>
+                <h3>Plus petit nombre de point : {{ tabMain['totalPtsLoose'][0] }}</h3>
+                <p>par {{ tabMain['totalPtsLoose'][1] }}</p>
+                <h3>Plus grand nombre de parties jouées : {{ tabMain['nbGame'][0] }}</h3>
+                <p>par {{ tabMain['nbGame'][1] }}</p>
+                <h3>Plus grand nombre de parties perdues : {{ tabMain['nbGameLoose'][0] }}</h3>
+                <p>par {{ tabMain['nbGameLoose'][1] }}</p>
+                <h3>Plus grand % de victoire/partie  : {{   tabMain['pourcent'][0]|number_format(2, ',', '.') }}</h3>
+                <p>par {{  tabMain['pourcent'][1] }}</p>
+            </div>
+            {% for tab in tabTeam %}
+                <div role="tabpanel" class="tab-pane fade in " id="{{ tab['id'] }}">
+                    <h3>{{ tab['name'] }}</h3>
+                    <p>Cette équipe totalise {{ tab['nbGame']-tab['nbGameLoose'] }} victoires sur un total de {{ tab['nbGame'] }} soit {{ tab['nbGameLoose'] }} parties perdues.</p>
+                    <p>Le nombre de points totalisé par cette équipe est de {{ tab['totalPts'] }} pts ({{ tab['nbGame']-tab['nbGameLoose'] }} victoires x 3000 pts + {{ tab['nbGameLoose'] }} pts en défaite)</p>
+                    <p>Donc la moyenne de points obtenu lorsque cette équipe perd est de {{ (tab['totalPtsLoose']/tab['nbGameLoose'])|number_format(0, ',', ' ') }} pts</p>
+                    <p>Pourcentage moyen de victoire : {{  tab['pourcent']|number_format(2, ',', '.') }} %</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
     <hr />
 
 {% endblock %}

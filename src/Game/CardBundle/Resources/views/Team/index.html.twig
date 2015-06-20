@@ -30,13 +30,13 @@
             <div role="tabpanel" class="tab-pane fade in active" id="General">
                 <h3><i class="fa fa-thumbs-o-up fa-fw"></i>Plus grand nombre de point : {{ tabMain['totalPts'][0] }}</h3>
                 <p>par {{ tabMain['totalPts'][1] }}</p>
-                <h3>Plus petit nombre de point : {{ tabMain['totalPtsLoose'][0] }}</h3>
+                <h5>Plus petit nombre de point : {{ tabMain['totalPtsLoose'][0] }}</h5>
                 <p>par {{ tabMain['totalPtsLoose'][1] }}</p>
-                <h3>Plus grand nombre de parties jouées : {{ tabMain['nbGame'][0] }}</h3>
+                <h5>Plus grand nombre de parties jouées : {{ tabMain['nbGame'][0] }}</h5>
                 <p>par {{ tabMain['nbGame'][1] }}</p>
-                <h3>Plus grand nombre de parties perdues : {{ tabMain['nbGameLoose'][0] }}</h3>
+                <h5>Plus grand nombre de parties perdues : {{ tabMain['nbGameLoose'][0] }}</h5>
                 <p>par {{ tabMain['nbGameLoose'][1] }}</p>
-                <h3>Plus grand % de victoire/partie  : {{ tabMain['pourcent'][0]|number_format(2, ',', '.') }}</h3>
+                <h5>Plus grand % de victoire/partie  : {{ tabMain['pourcent'][0]|number_format(2, ',', '.') }}</h5>
                 <p>par {{ tabMain['pourcent'][1] }}</p>
              </div>
         {% for tab in tabTeam %}
@@ -49,6 +49,13 @@
                 </div>
         {% endfor %}
         </div>
+    </div>
+    <div>
+    {% for tab in tabLow %}
+        {% for t in tab %}
+            {{ dump(t) }}<br/>
+        {% endfor %}
+    {% endfor %}
     </div>
 
 {% endblock %}

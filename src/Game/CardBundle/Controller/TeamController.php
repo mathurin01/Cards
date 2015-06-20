@@ -17,10 +17,12 @@ class TeamController extends Controller
         $tabMain = $this->loadTeamMain();
         $tabLow = $this->loadTeamLow();
         $tabTeam = $this->loadTeamTeam();
+        $tabOrder = $this->loadTeamOrder();
         return $this->render('GameCardBundle:Team:index.html.twig', array(
             'tabMain'   => $tabMain,
             'tabTeam'   => $tabTeam,
             'tabLow'    => $tabLow,
+            'tabOrder'    => $tabOrder,
         ));
     }
 
@@ -68,41 +70,85 @@ class TeamController extends Controller
         $tabOrder = array();
         $tabMain = array();
         $jj = 0;
+        $total = array();
+        $totalYear = 0;
+        $totalYearL = 0;
+        $totalYearNb = 0;
+        $totalYearNbL = 0;
         $totalA = 0;
         $totalLooseA = 0;
         $totalB = 0;
         $totalLooseB = 0;
         $nbGame = 0;
         $nbGameLoose = 0;
+        $year = null;
 
         foreach($teams as $t)
         {
-
             foreach($games as $g)
             {
-
                 if($g->getTeamA()->getId() === $t->getId())
                 {
+                    if($g->getYear() === null){
+                        $year = date_format($g->getDate(), 'Y');
+                    }
+                    if(!$year or $year == 0 or ($year != $g->getYear() and $g->getYear() != null)) {
+                        $year = $g->getYear();
+                        $totalYear = 0;
+                        $totalYearL = 0;
+                        $totalYearNb = 0;
+                        $totalYearNbL = 0;
+                    }
+
+                    $totalYear += $g->getScoreA();
                     $totalA += $g->getScoreA();
                     if($g->getScoreA()!= 3000)
                     {
+                        $totalYearL += $g->getScoreA();
                         $totalLooseA += $g->getScoreA();
+                        $totalYearNbL++;
                         $nbGameLoose++;
                     }
+                    $totalYearNb++;
                     $nbGame ++;
                 }
 
                 if($g->getTeamB()->getId() === $t->getId())
                 {
+                    if($g->getYear() === null){
+                        $year = date_format($g->getDate(), 'Y');
+                    }
+                    if(!$year or $year == 0 or $year != $g->getYear() and $g->getYear() != null) {
+                        $year = $g->getYear();
+
+                        $totalYear = 0;
+                        $totalYearL = 0;
+                        $totalYearNb = 0;
+                        $totalYearNbL = 0;
+                    }
+                    $totalYear += $g->getScoreB();
                     $totalB += $g->getScoreB();
                     if($g->getScoreB()!= 3000)
                     {
+                        $totalYearL += $g->getScoreB();
                         $totalLooseB += $g->getScoreB();
+                        $totalYearNbL++;
                         $nbGameLoose++;
                     }
-                    $nbGame++;
+                    $totalYearNb++;
+                    $nbGame ++;
                 }
+
+                if($year){
+                    $total[$year][$t->getId()]['score'] = $totalYear;
+                    $total[$year][$t->getId()]['loose'] = $totalYearL;
+                    $total[$year][$t->getId()]['nbGame'] = $totalYearNb;
+                    $total[$year][$t->getId()]['nbGameLoose'] = $totalYearNbL;
+                }
+
             }
+
+
             $tabTeam[$t->getId()]['name'] = ($t->getPlayer1()->getFirstname(). ' / ' .$t->getPlayer2()->getFirstname());
             $tabTeam[$t->getId()]['totalPts'] = $totalA + $totalB;
             $tabTeam[$t->getId()]['totalPtsLoose'] = $totalLooseA + $totalLooseB;
@@ -116,8 +162,8 @@ class TeamController extends Controller
             $totalB = 0;
             $totalLooseA = 0;
             $totalLooseB = 0;
-            $nbGame = 0;
-            $nbGameLoose = 0;
+            $nbGame = 1;
+            $nbGameLoose = 1;
         }
 
         $ii = 1;
@@ -130,6 +176,7 @@ class TeamController extends Controller
             $ii++;
 
         }
+        var_dump($tabLow);
 
         $tabMain['totalPts']        = max($tabLow['totalPts']);
         $tabMain['totalPtsLoose']   = max($tabLow['totalPtsLoose']);
